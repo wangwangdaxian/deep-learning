@@ -39,16 +39,13 @@ def vectorize_sequences(sequences, dimension=10000):
     return results
 
 
-def draw_loss(hist):
+def draw_loss(loss, val_loss):
     """
     绘制损失图
-    :param hist:模型训练返回的结果
     """
-    loss = hist.history['loss']
-    val_loss = hist.history['val_loss']
     epochs = range(1, len(loss) + 1)
     plt.clf()
-    plt.plot(epochs, loss, 'bo', label='Training loss')
+    plt.plot(epochs, loss, 'ro', label='Training loss')
     plt.plot(epochs, val_loss, 'b', label='Validation loss')
     plt.title('Training and validation loss')
     plt.xlabel('Epochs')
@@ -57,19 +54,31 @@ def draw_loss(hist):
     plt.show()
 
 
-def draw_acc(hist):
+def draw_acc(acc, val_acc):
     """
     绘制精度图
-    :param hist:模型训练返回的结果
     """
-    acc = hist.history['accuracy']
-    val_acc = hist.history['val_accuracy']
     epochs = range(1, len(acc) + 1)
     plt.clf()
-    plt.plot(epochs, acc, 'bo', label='Training acc')
+    plt.plot(epochs, acc, 'ro', label='Training acc')
     plt.plot(epochs, val_acc, 'b', label='Validation acc')
     plt.title('Training and validation accuracy')
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
+    plt.legend()
+    plt.show()
+
+
+def draw_mae(mae, val_mae):
+    """
+    绘制平均绝对误差图
+    """
+    epochs = range(1, len(mae) + 1)
+    plt.clf()
+    plt.plot(epochs, mae, 'ro', label='Training mae')
+    plt.plot(epochs, val_mae, 'b', label='Validation mae')
+    plt.title('Training and validation mean absolute error')
+    plt.xlabel('Epochs')
+    plt.ylabel('Mean Absolute Error')
     plt.legend()
     plt.show()

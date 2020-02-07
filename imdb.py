@@ -50,8 +50,8 @@ hist = model.fit(partial_x_train,
 # %% 绘制损失图表和精度图像
 import utils
 
-utils.draw_loss(hist)
-utils.draw_acc(hist)
+utils.draw_loss(hist.history['loss'], hist.history['val_loss'])
+utils.draw_acc(hist.history['acc'], hist.history['val_acc'])
 
 # %% 上述训练结果出现过拟合 适当减少训练次数
 model = models.Sequential()
